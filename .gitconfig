@@ -1,0 +1,15 @@
+[user]
+    name = inkooboo
+    email = inkooboo@gmail.com
+
+[color]
+    ui = auto
+
+[alias]
+    br = branch -a
+    co = checkout
+    ci = commit
+    t = log --oneline --graph --decorate=full --color --all
+    st = status
+
+
