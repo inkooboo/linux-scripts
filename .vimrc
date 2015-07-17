@@ -49,7 +49,7 @@ set showmatch
 " save load hooks
 " ---------------------------
 
-" delete space on the endline when saving
+" delete trailing spaces when saving
 autocmd BufWritePre *.h,*.hpp,*.cpp,*.py  :%s/\s\+$//e
 
 " open netrw on empty buffer
@@ -59,13 +59,24 @@ autocmd VimEnter * :if argc() is 0 | Explore | endif
 " ---------------------------
 " various C++ style errors highlithing
 " ---------------------------
-:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '\(\w\|)\|]\)\s*\(=\|==\|!=\|+\|\-\|+=\|\-=\|<=\|>=\||\|||\|&&\)\w'
-:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '\(\w\|)\|]\)\(=\|==\|!=\|+\|\-\|+=\|\-=\|<=\|>=\||\|||\|&&\)\s\+\w'
-:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '[;,]\w'
-:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '\S\s\+[;,]'
-:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '{\s*}'
-:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '\(=\|+\-\||\|&&\)$'
 
+" no space after ',' and ';'
+:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '[;,]\w'
+
+" spaces before trailing ';'
+:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '\S\s\+[;,]'
+
+" wrong identation - not power of 4 or too many
+:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '^\s\{1,3}\S'
+:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '^\s\{5,7}\S'
+:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '^\s\{9,11}\S'
+:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '^\s\{13,15}\S'
+:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '^\s\{17,19}\S'
+:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '^\s\{21,}\S'
+
+" extra spaces in function declarartion and calls
+:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '(\s\{1,}\S'
+:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '\S\s\{1,})'
 
 " ---------------------------
 "     hotkeys
