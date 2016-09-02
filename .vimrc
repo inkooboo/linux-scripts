@@ -66,14 +66,6 @@ autocmd VimEnter * :if argc() is 0 | Explore | endif
 " spaces before trailing ';'
 :au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '\S\s\+[;,]'
 
-" wrong identation - not power of 4 or too many
-:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '^\s\{1,3}\S'
-:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '^\s\{5,7}\S'
-:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '^\s\{9,11}\S'
-:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '^\s\{13,15}\S'
-:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '^\s\{17,19}\S'
-:au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '^\s\{21,}\S'
-
 " extra spaces in function declarartion and calls
 :au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '(\s\{1,}\S'
 :au BufRead,BufNewFile *.cpp,*.h syntax match ErrorMsg '\S\s\{1,})'
