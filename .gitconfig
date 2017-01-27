@@ -8,8 +8,11 @@
 [alias]
     br = branch -a
     co = checkout
-    ci = commit
     t = log --oneline --graph --decorate=full --color --all
     st = status
 
+[credential]
+	helper = cache
 
+[core]
+	editor = vim
