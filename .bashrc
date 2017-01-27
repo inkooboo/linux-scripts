@@ -35,6 +35,11 @@ else
 fi
 
 
+# One Vim to rule them all!
+export VISUAL=vim
+export EDITOR=vim
+
+
 # aliases
 alias ll='ls -la'
 alias v='vim'
